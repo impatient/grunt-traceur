@@ -1,8 +1,12 @@
-function test(a = 100, ...rest){
-  return {
-    a: a,
-    rest: rest
-  }
+function test(a, ...rest) {
+    return {
+        a: a,
+        rest: rest
+    };
 }
 
-module.exports = test
+function test2(a=100) { return  a;}
+
+var argTest = { test: test, test2:test2};
+
+module.exports = argTest;

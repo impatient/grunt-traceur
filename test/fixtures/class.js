@@ -1,24 +1,24 @@
 class Person {
 
-  constructor (name) {
-      this.name = name;
-  }
+    constructor(name) {
+        this.name = name;
+    }
 
-  hi () {
-      return this.name;
-  }
+    hi() {
+        return this.name;
+    }
 
 }
 
 class Man extends Person {
 
-  constructor (name) {
-      super(name);
-  }
+    constructor(name) {
+        super(name);
+    }
 
-  hi () {
-      return 'I am a man and my name is ' + super();
-  }
+    hi() {
+        return 'I am a man and my name is ' + this.name;
+    }
 
 }
 

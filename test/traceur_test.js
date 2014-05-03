@@ -32,8 +32,9 @@ exports.traceur = {
 
   args: function (test) {
     var func = require('./tmp/args');
-    var result = func(undefined, 1, 2, 3);
-    test.equal(result.a, 100, 'default argument should work');
+    var resDefaults = func.test2(undefined, 1, 2, 3);
+    test.equal(resDefaults, 100, 'default argument should work');
+    var result = func.test(undefined, 1, 2, 3);
     var restType = getType(result.rest);
     test.equal(restType, '[object Array]', 'rest arguments should be converted to an array')
     test.done();
