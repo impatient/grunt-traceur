@@ -22,10 +22,10 @@
 
 var fs = require('fs');
 var path = require('path');
-var traceur = require('traceur');
+require('traceur');
 
 function getType (obj) {
-  return Object.prototype.toString.call(obj)
+  return Object.prototype.toString.call(obj);
 }
 
 exports.traceur = {
@@ -36,7 +36,7 @@ exports.traceur = {
     test.equal(resDefaults, 100, 'default argument should work');
     var result = func.test(undefined, 1, 2, 3);
     var restType = getType(result.rest);
-    test.equal(restType, '[object Array]', 'rest arguments should be converted to an array')
+    test.equal(restType, '[object Array]', 'rest arguments should be converted to an array');
     test.done();
   },
 
@@ -58,9 +58,14 @@ exports.traceur = {
     var Man = require('./tmp/class');
     var name = 'john';
     var man = new Man(name);
-    var msg = man.hi()
-    test.equal(msg, 'I am a man and my name is ' + name, 'class and inheritance should work')
-    test.done()
+    var msg = man.hi();
+    test.equal(msg, 'I am a man and my name is ' + name, 'class and inheritance should work');
+    test.done();
+  },
+  arrowDir: function(test) {
+    var arr = require('./tmp/directoryTest/arrow').echo;
+    test.equal(arr(1),1);
+    test.done();
   },
 
   sourceMaps: function (test) {

@@ -8,11 +8,11 @@
 
 'use strict';
 
-module.exports = function(grunt) {
+module.exports = function (grunt) {
 
   // Project configuration.
   grunt.initConfig({
-    
+
     // Configuration to be run (and then tested).
     traceur: {
       options: {
@@ -20,14 +20,27 @@ module.exports = function(grunt) {
         modules: 'commonjs'
       },
       test: {
+        options: {
+          fileRoot: 'test/fixtures'
+        },
         files: {
-          'test/tmp/': ['test/fixtures/*.js']
+          'test/tmp/': ['test/fixtures/**/*.js']
         }
       }
     },
 
     nodeunit: {
       tests: ['test/*_test.js']
+    },
+    watch: {
+      tasks: {
+        files: ['tasks/*.js'],
+        tasks: ['traceur', 'nodeunit']
+      },
+      tests: {
+        files: ['text/fixtures/**/*.js'],
+        tasks: ['traceur', 'nodeunit']
+      }
     }
 
   });
@@ -36,6 +49,7 @@ module.exports = function(grunt) {
   grunt.loadTasks('tasks');
 
   grunt.loadNpmTasks('grunt-contrib-nodeunit');
+  grunt.loadNpmTasks('grunt-contrib-watch');
 
   grunt.registerTask('default', ['traceur', 'nodeunit']);
 

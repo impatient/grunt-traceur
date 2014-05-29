@@ -29,6 +29,7 @@ grunt.initConfig({
       sourceMaps: true // default: false
     },
     custom: {
+      options: { fileRoot: 'test/fixtures' }
       files:{
         'build/': ['js/**/*.js'] // dest : [source files]
       }
@@ -46,6 +47,8 @@ Some common options:
 
 * `experimental` - Turn on all experimental features
 * `blockBinding` - Turn on support for `let` and `const`
+
+* `fileRoot` - Not a traceur option, used to determine layout of copied files.  No need to force concatenating/inline module behavior.
 
 ## Contributing
 In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [Grunt](http://gruntjs.com/).
