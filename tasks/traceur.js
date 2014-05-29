@@ -51,8 +51,6 @@ function compileAll(grunt, compile, group, options, callback) {
         if(offset) {
           currentDest = dest  +  offset + '/';
         }
-        // console.log('Group', group, 'srcs', srcs, 'dest', dest);
-      //  console.log('test:', dest + path.basename(res.file));
         if (!grunt.file.exists(currentDest)) {
           grunt.file.mkdir(currentDest);
         }
@@ -89,6 +87,7 @@ function compileAll(grunt, compile, group, options, callback) {
       callback(true);
     }
   });
+  grunt.file.copy('node_modules/traceur/bin/traceur-runtime.js', dest + '/traceur-runtime.js');
 }
 
 module.exports = function (grunt) {
