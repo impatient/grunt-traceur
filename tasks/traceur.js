@@ -10,7 +10,8 @@
 var fs = require('fs'),
   path = require('path'),
   compiler = require('../lib/compiler'),
-  async = require('async');
+  async = require('async'),
+  traceur = require('traceur');
 
 function asyncCompile(content, filename, options, callback) {
   var result;
@@ -87,7 +88,7 @@ function compileAll(grunt, compile, group, options, callback) {
       callback(true);
     }
   });
-  grunt.file.copy('node_modules/traceur/bin/traceur-runtime.js', dest + '/traceur-runtime.js');
+  grunt.file.copy(traceur.RUNTIME_PATH, dest + '/traceur-runtime.js');
 }
 
 module.exports = function (grunt) {
